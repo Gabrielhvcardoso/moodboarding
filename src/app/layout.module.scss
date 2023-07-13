@@ -1,0 +1,19 @@
+.app_header {
+    background-color: var(--color-background);
+    border-bottom: var(--color-stroke) 0.1px solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 12px;
+
+    > strong {
+        font-size: 28px;
+    }
+}
+
+.app_main {
+    background-color: var(--color-background);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}

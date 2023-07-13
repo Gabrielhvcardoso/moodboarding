@@ -1,8 +1,10 @@
 import './globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import styles from './layout.module.scss'
+import localFont from 'next/font/local'
 
-const inter = Inter({ subsets: ['latin'] })
+const Belanosima = localFont({ src: '../assets/fonts/Belanosima-Regular.ttf' })
+
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,8 +17,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="pt-br">
+      <body>
+        <header className={styles.app_header}>
+          <strong className={Belanosima.className}>Moodboarding</strong>
+        </header>
+        <main className={styles.app_main}>
+          {children}
+        </main>
+      </body>
     </html>
   )
 }
