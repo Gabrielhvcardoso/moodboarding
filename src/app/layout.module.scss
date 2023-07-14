@@ -1,19 +1,47 @@
-.app_header {
-    background-color: var(--color-background);
+.globalDisplayFilter {
+    position: absolute;
+    inset: 0 0 0 0;
+    background: rgb(182, 34, 58, 0.1);
+    background-image: url('../assets/filters/noise-1.png');
+    opacity: 0.04;
+}
+
+.appHeader {
+    border-top: var(--color-stroke) 0.1px solid;
     border-bottom: var(--color-stroke) 0.1px solid;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 12px;
+    margin: 12px;
+    padding: 12px 0px;
+    overflow: hidden;
 
     > strong {
-        font-size: 28px;
+        display: table-cell;
+        font-size: 72px;
+        line-height: 28px;
+        color: var(--color-stroke);
+        vertical-align: middle;
+        margin-top: 6px;
+        margin-bottom: -2px;
     }
 }
 
-.app_main {
+.appMain {
     background-color: var(--color-background);
     display: flex;
     flex: 1;
     flex-direction: column;
+}
+
+.appHeader_linkContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.appHeader_link {
+    font-size: 14px;
+    text-transform: uppercase;
 }
