@@ -28,7 +28,27 @@ body {
   flex-direction: column;
   height: 100vh;
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow: hidden;
   width: 100vw;
   color: var(--color-stroke);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #00000020;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #0000003f;
 }

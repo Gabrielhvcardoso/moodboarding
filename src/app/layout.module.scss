@@ -1,8 +1,9 @@
 .globalDisplayFilter {
-    position: absolute;
-    inset: 0 0 0 0;
     background: rgb(182, 34, 58, 0.1);
     background-image: url('../assets/filters/noise-1.png');
+    inset: 0 0 0 0;
+    position: absolute;
+    pointer-events: none;
     opacity: 0.04;
 }
 
@@ -12,18 +13,18 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 12px;
+    margin: 12px 12px 0;
     padding: 12px 0px;
     overflow: hidden;
 
     > strong {
+        color: var(--color-stroke);
         display: table-cell;
         font-size: 72px;
         line-height: 28px;
-        color: var(--color-stroke);
-        vertical-align: middle;
-        margin-top: 6px;
         margin-bottom: -2px;
+        margin-top: 6px;
+        vertical-align: middle;
     }
 }
 
@@ -32,6 +33,7 @@
     display: flex;
     flex: 1;
     flex-direction: column;
+    overflow: auto;
 }
 
 .appHeader_linkContainer {
