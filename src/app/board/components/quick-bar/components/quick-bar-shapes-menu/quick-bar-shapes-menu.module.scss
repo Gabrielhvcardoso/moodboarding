@@ -1,0 +1,21 @@
+$shape-size: 20px;
+
+.shapesMenu {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.baseShape {
+    background: var(--color-main);
+    border: 2px solid var(--color-stroke);
+    cursor: pointer;
+    max-height: $shape-size;
+    min-height: $shape-size;
+    max-width: $shape-size;
+    min-width: $shape-size;
+}
+
+.shapesMenu_Circle {
+    border-radius: 50%;
+}

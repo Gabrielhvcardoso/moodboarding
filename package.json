@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reactflow/node-resizer": "^2.1.1",
     "@types/node": "20.4.2",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.7",
@@ -16,7 +17,9 @@
     "eslint-config-next": "13.4.9",
     "next": "13.4.9",
     "react": "18.2.0",
+    "react-bootstrap-icons": "^1.10.3",
     "react-dom": "18.2.0",
+    "reactflow": "^11.7.4",
     "typescript": "5.1.6"
   },
   "devDependencies": {
