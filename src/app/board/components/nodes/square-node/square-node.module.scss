@@ -1,29 +1,8 @@
 .squareNode {
     background-color: var(--color-highlight);
     border-radius: 8px;
-    width: 200px;
-    height: 200px;
-}
-
-.handleTop {
-    top: -16px;
-}
-
-.handleRight {
-    right: -16px;
-}
-
-.handleBottom {
-    bottom: -16px;
-}
-
-.handleLeft {
-    left: -16px;
-}
-
-.handleTop, .handleRight, .handleBottom, .handleLeft {
-    background: var(--color-stroke);
-    opacity: 0.8;
-    height: 12px;
-    width: 12px;
+    min-width: 100px;
+    min-height: 100px;
+    width: 100%;
+    height: 100%;
 }

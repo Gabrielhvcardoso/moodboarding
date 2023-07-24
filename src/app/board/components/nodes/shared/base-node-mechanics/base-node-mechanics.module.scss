@@ -1,0 +1,26 @@
+.nodeWrapper {
+    position: absolute;
+    inset: 0;
+
+    .handleHoverContainer:hover ~ .handle,
+    .handle:hover {
+        opacity: 1;
+    }
+}
+
+.handleHoverContainer {
+    position: absolute;
+    inset: -12px;
+}
+
+.handleTop, .handleRight, .handleBottom, .handleLeft {
+    background: var(--color-stroke);
+    height: 12px;
+    width: 12px;
+    opacity: 0;
+}
+
+.handleTop { top: -16px; }
+.handleRight { right: -16px; }
+.handleBottom { bottom: -16px; }
+.handleLeft { left: -16px; }
