@@ -1,0 +1,15 @@
+.textNode {
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.textNodeTextarea {
+    background: none;
+    border: none;
+    flex: 1;
+    overflow: hidden;
+    resize: none;
+}

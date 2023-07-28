@@ -1,7 +1,8 @@
 import React, { useContext, useMemo, useState } from 'react';
-import styles from "./quick-bar.module.scss";
+import { BoardContext } from '../../page';
 import { Star, Type, Image as ImageIcon, Film, CodeSlash } from "react-bootstrap-icons";
 import QuickBarShapesMenu from './components/quick-bar-shapes-menu/quick-bar-shapes-menu.component';
+import styles from "./quick-bar.module.scss";
 
 type MenuState = 'shapes' | 'image' | 'video' | 'embed';
 
@@ -13,6 +14,7 @@ const MenuOffset: Record<MenuState, number> = {
 }
 
 export default function QuickBar() {
+    const { addNode } = useContext(BoardContext);
     const [menuState, setMenuState] = useState<MenuState|null>(null);
 
     const menuStyle = useMemo(() => {
@@ -21,13 +23,22 @@ export default function QuickBar() {
             : {};
     }, [menuState]);
 
+    function addText() {
+        addNode({
+            id: crypto.randomUUID(),
+            type: 'text',
+            position: { x: 200, y: 200 },
+            data: {}
+        });
+    }
+
     return (
         <>
             <div className={styles.quickBarWrapper}>
                 { /* Quick Bar */ }
 
                 <div className={styles.quickBarContainer}>
-                    <div className={styles.quickBarButton}>
+                    <div className={styles.quickBarButton} onClick={addText}>
                         <Type height={24} width={24} />
                     </div>
                     <div className={styles.quickBarButton} onClick={() => setMenuState('shapes')}>

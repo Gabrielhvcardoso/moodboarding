@@ -46,8 +46,6 @@ export default function BaseNodeMechanics(props: NodeProps) {
     return (
         <div className={styles.nodeWrapper}>
             <NodeResizer
-                minHeight={100}
-                minWidth={100}
                 isVisible={props.selected}
             />
 
