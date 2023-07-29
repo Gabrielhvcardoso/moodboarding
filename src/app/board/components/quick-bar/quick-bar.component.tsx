@@ -2,6 +2,7 @@ import React, { useContext, useMemo, useState } from 'react';
 import { BoardContext } from '../../page';
 import { Star, Type, Image as ImageIcon, Film, CodeSlash } from "react-bootstrap-icons";
 import QuickBarShapesMenu from './components/quick-bar-shapes-menu/quick-bar-shapes-menu.component';
+import QuickBarImageMenu from './components/quick-bar-image-menu/quick-bar-image-menu.component';
 import styles from "./quick-bar.module.scss";
 
 type MenuState = 'shapes' | 'image' | 'video' | 'embed';
@@ -64,6 +65,7 @@ export default function QuickBar() {
                         <div className={styles.quickBarMenuArrow} style={menuStyle} />
                         <div className={styles.quickBarMenu} style={menuStyle} onMouseDown={e => e.stopPropagation()}>
                             { menuState === 'shapes' && <QuickBarShapesMenu /> }
+                            { menuState === 'image' && <QuickBarImageMenu /> }
                         </div>
                     </div>
                 )
