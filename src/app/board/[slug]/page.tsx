@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useCallback, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useMemo, useState } from "react";
 import ReactFlow, { Background, Controls, Node, Connection, ConnectionMode, addEdge, useEdgesState, useNodesState } from "reactflow";
 import QuickBar from "../components/quick-bar/quick-bar.component";
 import { BoardContextType } from '../board-context.type';
@@ -13,6 +13,10 @@ import EDGE_TYPES from "../components/edges/edge-types";
 
 export const BoardContext = createContext<BoardContextType>({} as BoardContextType);
 
+interface BoardLocalState extends Pick<BoardContextType, 'nodes'|'edges'> {
+    slug: string;
+}
+
 interface Props {
     params: {
         slug: string;
@@ -24,13 +28,33 @@ export default function Board(props: Props) {
     const [nodes, setNodes, onNodesChange] = useNodesState([]);
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
+    const boardLocalState = useMemo(() => {
+        let localState: BoardLocalState|null = null;
+
+        if (!isLoading) {
+            localState = { slug: props.params.slug, nodes, edges };
+            localStorage.setItem(localState.slug, JSON.stringify(localState));
+            console.log('saving ' + localState.slug)
+        }
+
+        return localState;
+    }, [isLoading, props.params.slug, edges, nodes]);
+
     // start up
 
     useEffect(() => {
-        setTimeout(() => {
+        if (props.params.slug) {
+            const localStateRaw = localStorage.getItem(props.params.slug);
+
+            if (localStateRaw) {
+                const localState = JSON.parse(localStateRaw) as BoardLocalState;
+                setNodes(localState.nodes)
+                setEdges(localState.edges)
+            }
+
             setIsLoading(false);
-        }, 3000);
-    }, [props.params.slug]);
+        }
+    }, [props.params.slug, setNodes, setEdges]);
 
     const onConnect = useCallback((connection: Connection) => {
         return setEdges(edges => addEdge(connection, edges));

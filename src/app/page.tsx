@@ -1,19 +1,25 @@
 import styles from "./page.module.scss";
 import Link from 'next/link';
-import { CardSesssion } from "@/types/api/home/card-sesssion.type";
+import { BoardRef } from '@/types';
 
-const CARD_SESSSIONS: CardSesssion[] = [
+const CARD_SESSSIONS: { title: string, boards: BoardRef[] }[] = [
     {
-        sessionTitle: 'Quadros recentes',
-        sessionCards: ['Título 1', 'Título 2', 'Título 3']
+        title: 'Quadros recentes',
+        boards: [
+            {
+                title: 'Test Board 001',
+                slug: '227319d4-ef27-47cd-9e23-1f257193ae4c'
+            }
+        ]
     },
     {
-        sessionTitle: 'Meus quadros',
-        sessionCards: ['Título 1', 'Título 2']
-    },
-    {
-        sessionTitle: 'Recomendados',
-        sessionCards: ['Título 1', 'Título 2', 'Título 3']
+        title: 'Meus quadros',
+        boards: [
+            {
+                title: 'Test Board 001',
+                slug: '227319d4-ef27-47cd-9e23-1f257193ae4c'
+            }
+        ]
     }
 ]
 
@@ -44,14 +50,14 @@ export default function Home() {
                 CARD_SESSSIONS.map((sss) => (
                     <>
                         <span className={styles.cardRowwwHeadline}>
-                            { sss.sessionTitle }
+                            { sss.title }
                         </span>
                         <div className={styles.cardRowww}>
                             {
-                                sss.sessionCards.map((cardTitle) => (
-                                    <Link key={cardTitle} className={styles.cardContainer} role="div" href={`/board/${crypto.randomUUID()}`}>
+                                sss.boards.map(({ title, slug }) => (
+                                    <Link key={slug} className={styles.cardContainer} role="div" href={`/board/${slug}`}>
                                         <div className={styles.card}></div>
-                                        <span>{ cardTitle }</span>
+                                        <span>{ title }</span>
                                     </Link>
                                 ))
                             }
