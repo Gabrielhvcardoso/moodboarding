@@ -1,6 +1,6 @@
 import { KeyboardEventHandler, useContext, useEffect, useRef, useState } from 'react';
 import { useInput } from '@/hooks';
-import { BoardContext } from '@/app/board/page';
+import { BoardContext } from '@/app/board/[slug]/page';
 
 import styles from './quick-bar-image-menu.module.scss';
 import { Upload } from 'react-bootstrap-icons';

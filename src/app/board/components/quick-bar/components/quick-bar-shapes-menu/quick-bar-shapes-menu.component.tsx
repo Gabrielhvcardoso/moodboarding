@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { BoardContext } from '@/app/board/page';
+import { BoardContext } from '@/app/board/[slug]/page';
 
 import styles from './quick-bar-shapes-menu.module.scss';
 

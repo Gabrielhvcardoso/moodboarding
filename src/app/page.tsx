@@ -49,7 +49,7 @@ export default function Home() {
                         <div className={styles.cardRowww}>
                             {
                                 sss.sessionCards.map((cardTitle) => (
-                                    <Link key={cardTitle} className={styles.cardContainer} role="div" href="/board">
+                                    <Link key={cardTitle} className={styles.cardContainer} role="div" href={`/board/${crypto.randomUUID()}`}>
                                         <div className={styles.card}></div>
                                         <span>{ cardTitle }</span>
                                     </Link>
