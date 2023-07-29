@@ -9,19 +9,19 @@
 }
 
 .quickBarContainer {
-    background-color: var(--color-background);
-    border: 0.1px solid var(--color-stroke);
+    border: 0.1px solid var(--color-main);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .quickBarButton {
-    border-radius: inherit;
+    background-color: var(--color-background);
+    color: var(--color-main);
     cursor: pointer;
     padding: 12px;
     transition: background-color 0.2s;
 
     &:hover {
-        background-color: var(--color-secondary);
+        background-color: var(--color-background-hover);
     }
 }
 
@@ -40,8 +40,8 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    background-color: var(--color-background);
-    border: 0.1px solid var(--color-stroke);
+    background-color: var(--color-surface);
+    border: 0.1px solid var(--color-main);
     padding: 12px;
 }
 
@@ -50,5 +50,5 @@
     height: 0;
     border-top: 12px solid transparent;
     border-bottom: 12px solid transparent;
-    border-left: 12px solid var(--color-stroke);
+    border-left: 12px solid var(--color-main);
 }

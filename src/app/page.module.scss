@@ -3,19 +3,50 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    gap: 24px;
+    gap: 12px;
     padding: 24px;
+    overflow: auto;
+}
+
+.cardRowwwEmphasis {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 64px 0 64px;
+
+    .emphasisTitle {
+        font-size: 48px;
+        font-weight: 700;
+    }
+
+    .card {
+        border-color: var(--color-stroke) !important;
+    }
 }
 
 .cardRowwwHeadline {
-    font-size: 24px;
+    color: var(--color-main);
+    border-bottom: 1px solid --color-main;
+    border-top: 1px solid --color-main;
+    font-size: 20px;
+    font-weight: 700;
     margin-top: 8px;
+    padding: 24px;
+    margin: 0px -24px;
+    text-transform: uppercase;
+
+    &::first-letter {
+        font-size: 24px;
+    }
 }
 
 .cardRowww {
     display: grid;
+    font-size: 14px;
+    font-weight: 600;
     grid-template-columns: repeat(3, clamp(180px, 25%, 300px));
     gap: 12px;
+    margin: 24px 0;
 
     @media (max-width: 615px) {
         display: flex;
@@ -31,23 +62,19 @@
         gap: 8px;
         min-width: 150px;
         text-decoration: none;
-
-        .cardContainerTitle {
-            font-size: 14px;
-        }
     }
 
     .card {
         align-items: start;
-        border: .1px solid var(--color-stroke);
-        border-radius: 16px;
+        border: 1px solid var(--color-main);
+        border-radius: 6px;
         cursor: pointer;
         display: flex;
         flex: 1;
         flex-direction: row;
         justify-content: space-between;
         min-height: 160px;
-        padding: 24px;
+        padding: 12px;
 
         .cardBottomText {
             align-self: flex-end;

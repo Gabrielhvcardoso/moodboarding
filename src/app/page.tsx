@@ -1,12 +1,6 @@
 import styles from "./page.module.scss";
 import Link from 'next/link';
 import { CardSesssion } from "@/types/api/home/card-sesssion.type";
-import { Nanum_Gothic } from "next/font/google";
-
-const Nanum_GothicFont = Nanum_Gothic({
-    weight: '700',
-    subsets: ['latin']
-})
 
 const CARD_SESSSIONS: CardSesssion[] = [
     {
@@ -25,26 +19,29 @@ const CARD_SESSSIONS: CardSesssion[] = [
 
 export default function Home() {
     return (
-        <main className={`${styles.main} ${Nanum_GothicFont.className}`}>
+        <main className={styles.main}>
 
             { /* Emphasis card row */ }
 
-            <div className={styles.cardRowww}>
-                <div className={styles.card}>
-                    <div className={styles.cardBottomText}>Quadros</div>
-                </div>
-                <div className={styles.card}>
-                    <div className={styles.cardBottomText}>Explorar</div>
-                </div>
-                <div className={styles.card}>
-                    <div className={styles.cardBottomText}>Aprender</div>
+            <div className={styles.cardRowwwEmphasis}>
+                <span className={styles.emphasisTitle}>Bem vindo</span>
+                <div className={styles.cardRowww}>
+                    <div className={styles.card}>
+                        <div className={styles.cardBottomText}>Quadros</div>
+                    </div>
+                    <div className={styles.card}>
+                        <div className={styles.cardBottomText}>Explorar</div>
+                    </div>
+                    <div className={styles.card}>
+                        <div className={styles.cardBottomText}>Aprender</div>
+                    </div>
                 </div>
             </div>
 
             { /* Custom Card Rows */ }
 
             {
-                CARD_SESSSIONS.map((sss, index) => (
+                CARD_SESSSIONS.map((sss) => (
                     <>
                         <span className={styles.cardRowwwHeadline}>
                             { sss.sessionTitle }
@@ -54,9 +51,7 @@ export default function Home() {
                                 sss.sessionCards.map((cardTitle) => (
                                     <Link key={cardTitle} className={styles.cardContainer} role="div" href="/board">
                                         <div className={styles.card}></div>
-                                        <div className={styles.cardContainerTitle}>
-                                            { cardTitle }
-                                        </div>
+                                        <span>{ cardTitle }</span>
                                     </Link>
                                 ))
                             }

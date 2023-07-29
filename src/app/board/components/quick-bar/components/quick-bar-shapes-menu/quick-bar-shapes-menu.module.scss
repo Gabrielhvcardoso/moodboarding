@@ -7,8 +7,7 @@ $shape-size: 20px;
 }
 
 .baseShape {
-    background: var(--color-main);
-    border: 2px solid var(--color-stroke);
+    border: 2px solid var(--color-main);
     cursor: pointer;
     max-height: $shape-size;
     min-height: $shape-size;

@@ -5,94 +5,80 @@
     position: absolute;
     pointer-events: none;
     opacity: 0.04;
+    z-index: 10;
+}
+
+$header-height: 58px;
+$wave-height: 150px;
+
+.homePageWaves {
+    background-color: var(--color-highlight);
+    height: $wave-height;
+    margin-top: calc($header-height * -1 - 12px);
+    position: relative;
+
+    > .waveSvgContainer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: row;
+        justify-content: flex-end;
+        gap: -32px;
+
+        > svg {
+            margin-top: -1px;
+            transform: translateX(0%) translateY($wave-height) rotate(180deg);
+            inset: 100% 0 0 auto;
+            z-index: 0;
+            min-width: 200vw;
+    
+            animation: animateWave 40s linear infinite both;
+        }
+    }
+
+    & ~ main {
+        margin-top: calc($wave-height * -1 + $header-height + 12px);
+        z-index: 1;
+        backdrop-filter: blur(100px);
+    }
+}
+
+@keyframes animateWave {
+    0% {
+        transform: translateX(0%) translateY($wave-height) rotate(180deg);
+    }
+
+    100% {
+        transform: translateX(100%) translateY($wave-height) rotate(180deg);
+    }
 }
 
 .appHeader {
-    border-top: var(--color-stroke) 0.1px solid;
-    border-bottom: var(--color-stroke) 0.1px solid;
+    border-top: var(--color-main) 0.1px solid;
+    border-bottom: var(--color-main) 0.1px solid;
+    color: var(--color-main);
     display: flex;
+    min-height: $header-height;
+    max-height: $header-height;
+    flex: 1 0 auto;
     flex-direction: row;
     justify-content: space-between;
     margin: 12px 12px 0;
     padding: 12px 0px 12px 12px;
     overflow: hidden;
+    z-index: 1;
 
-    > a {
-        color: var(--color-stroke);
-        cursor: pointer;
-        display: table-cell;
-        font-size: 48px;
-        line-height: 28px;
-        margin-bottom: -2px;
-        margin-top: 6px;
-        text-decoration: none;
-        user-select: none;
-        vertical-align: middle;
-        -webkit-user-select: none;
-
-        transition: 2s transform;
-        transform: translate(0, 0, 0) rotate(0deg);
-
-        animation: shake 120s cubic-bezier(.04,.7,.68,-0.28) infinite;
-        transform: translate(0, 0, 0) rotate(0deg);
-        backface-visibility: hidden;
-        perspective: 1000px;
-
-        &.logoActive {
-            animation: press 2s cubic-bezier(0,.61,.22,-0.15) normal forwards;
-            transform: scale(1) rotate(0deg);
-        }
-    }
-}
-
-@keyframes shake {
-    10%, 90% {
-        transform: translate(-1px, 0) rotate(3deg);
-    }
-    
-    20%, 80% {
-        transform: translate(2px, 10px) rotate(-1deg);
-    }
-  
-    30%, 50%, 70% {
-        transform: translate(-4px, -5px) rotate(-10deg);
-    }
-  
-    40%, 60% {
-        transform: translate(4px, 0) rotate(0deg);
-    }
-}
-
-@keyframes press {
-    5% {
-        transform: scale(0.98) rotate(0deg);
-    }
-
-    30% {
-        transform: scale(1.01) rotate(0deg);
-    }
-
-    35% {
-        transform: scale(1) rotate(0deg);
-    }
-
-    /**/
-
-    40%, 60%, 80% {
-        transform: scale(1) rotate(0.2deg);
-    }
-
-    50%, 70%, 90% {
-        transform: scale(1) rotate(-0.2deg);
+    &.appHeaderInverseColors {
+        border-top: var(--color-stroke) 0.1px solid !important;
+        border-bottom: var(--color-stroke) 0.1px solid !important;
+        color: var(--color-stroke) !important;
     }
 }
 
 .appMain {
-    background-color: var(--color-background);
+    align-items: stretch;
     display: flex;
     flex: 1;
     flex-direction: column;
-    overflow: auto;
 }
 
 .appHeader_linkContainer {

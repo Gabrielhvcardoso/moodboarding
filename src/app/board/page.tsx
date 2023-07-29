@@ -13,7 +13,7 @@ import ReactFlow, {
     ConnectionMode,
     addEdge,
     useEdgesState,
-    useNodesState 
+    useNodesState
 } from "reactflow";
 
 import styles from "./page.module.scss";
@@ -56,7 +56,7 @@ export default function Board() {
                     connectionMode={ConnectionMode.Loose}
                     defaultEdgeOptions={{ type: 'regular' }}
                 >
-                    <Background gap={12} size={2} color="#ddd" />
+                    <Background gap={12} size={2} color="var(--color-stroke)" />
                     <Controls />
                 </ReactFlow>
 

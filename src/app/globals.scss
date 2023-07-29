@@ -1,19 +1,35 @@
 :root {
-  --color-background: #fffffe;
-  --color-headline: #272343;
-  --color-paragraph: #2d334a;
-  --color-button: #ffd803;
-  --color-button-text: #272343;
+  --color-background: #232946;
+  --color-background-hover: #414B81;
 
-  --color-stroke: #272343;
-  --color-main: #fffffe;
-  --color-highlight: #ffd803;
-  --color-secondary: #e3f6f5;
-  --color-tertiary: #bae8e8;
+  --color-surface: #414B81;
+
+  --color-headline: #fffffe;
+  --color-paragraph: #b8c1ec;
+  --color-button: #eebbc3;
+  --color-button-text: #232946;
+
+  --color-stroke: #121629;
+  --color-main: #b8c1ec;
+  --color-highlight: #eebbc3;
+  --color-secondary: #fffffe;
+  --color-tertiary: #eebbc3;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {}
+  :root {
+    // --color-background: ;
+    // --color-headline: ;
+    // --color-paragraph: ;
+    // --color-button: ;
+    // --color-button-text: ;
+  
+    // --color-stroke: ;
+    // --color-main: ;
+    // --color-highlight: ;
+    // --color-secondary: ;
+    // --color-tertiary: ;
+  }
 }
 
 * {
@@ -24,11 +40,13 @@
 
 html,
 body {
+  background-color: var(--color-background);
+  color: var(--color-main);
   display: flex;
   flex-direction: column;
   height: 100vh;
   max-width: 100vw;
-  overflow: hidden;
+  overflow-y: auto;
   width: 100vw;
   color: var(--color-stroke);
 }
