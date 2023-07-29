@@ -34,6 +34,20 @@
     inset: 0;
     position: fixed;
     padding-right: 63px;
+    z-index: 2;
+    animation: backdrop-entry 0.2s ease-out forwards;
+}
+
+@keyframes backdrop-entry {
+    0% {
+        background: var(--color-backdrop-none);
+        backdrop-filter: blur(0px);
+    }
+
+    100% {
+        background: var(--color-backdrop-soft);
+        backdrop-filter: blur(1px);
+    }
 }
 
 .quickBarMenu {
@@ -43,6 +57,7 @@
     background-color: var(--color-surface);
     border: 0.1px solid var(--color-main);
     padding: 12px;
+    animation: quick-bar-menu-entry 0.2s ease-out forwards;
 }
 
 .quickBarMenuArrow {
@@ -51,4 +66,15 @@
     border-top: 12px solid transparent;
     border-bottom: 12px solid transparent;
     border-left: 12px solid var(--color-main);
+    animation: quick-bar-menu-entry 0.4s ease-out forwards;
+}
+
+@keyframes quick-bar-menu-entry {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
