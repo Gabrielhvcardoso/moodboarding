@@ -3,11 +3,11 @@
 import React from 'react';
 import Link from 'next/link';
 import { useState } from 'react';
-import { Henny_Penny } from 'next/font/google'
+import { Londrina_Solid } from 'next/font/google'
 
 import styles from './app-logo.module.scss';
 
-const Henny_PennyFont = Henny_Penny({
+const Londrina_SolidFont = Londrina_Solid({
     weight: '400',
     subsets: ['latin']
 })
@@ -23,7 +23,7 @@ export default function AppLogo() {
 
     return (
         <Link
-            className={`${Henny_PennyFont.className} ${styles.appLogo} ${logoAnimationActive ? styles.appLogoActive : null}`}
+            className={`${Londrina_SolidFont.className} ${styles.appLogo} ${logoAnimationActive ? styles.appLogoActive : null}`}
             onClick={handleLogoClick}
             href="/"
         >
