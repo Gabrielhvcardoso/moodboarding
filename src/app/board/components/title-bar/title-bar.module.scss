@@ -1,0 +1,20 @@
+$header-height: var(--app-header-height);
+
+.titleBar {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 12px;
+}
+
+.titleBarInput {
+    background: none;
+    color: var(--color-main);
+    border: none;
+    outline: none;
+    font-size: 24px;
+
+    &::placeholder {
+        color: var(--color-main);
+    }
+}

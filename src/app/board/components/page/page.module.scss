@@ -1,12 +1,4 @@
-.board_loading {
-    align-items: center;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.board_main {
+.page_main {
     flex: 1;
     animation: board-main-entry 4s ease-out forwards;
 }

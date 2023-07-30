@@ -1,17 +1,14 @@
-import {
-    Node,
-    Edge,
-    OnNodesChange,
-    OnEdgesChange
-} from "reactflow";
+import { PageContextType } from "./page-context.type";
+
+export interface BoardContextPage extends Partial<Pick<PageContextType, 'nodes'|'edges'>> {
+    slug: string,
+    title: string,
+    order: number,
+}
 
 export interface BoardContextType {
-    nodes: Node<any, string | undefined>[],
-    setNodes: React.Dispatch<React.SetStateAction<Node<any, string | undefined>[]>>,
-    onNodesChange: OnNodesChange,
-    edges: Edge<any>[],
-    setEdges: React.Dispatch<React.SetStateAction<Edge<any>[]>>,
-    onEdgesChange: OnEdgesChange,
-
-    addNode: (node: Node) => void,
+    slug: string,
+    title: string|null,
+    pages: BoardContextPage[],
+    setPages: (page: BoardContextPage[]) => void
 }

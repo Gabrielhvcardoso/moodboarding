@@ -1,6 +1,6 @@
 import { KeyboardEventHandler, useContext, useEffect, useRef, useState } from 'react';
 import { useInput } from '@/hooks';
-import { BoardContext } from '@/app/board/[slug]/page';
+import { PageContext } from '@/app/board/components/page/page.component';
 
 import styles from './quick-bar-image-menu.module.scss';
 import { Upload } from 'react-bootstrap-icons';
@@ -12,7 +12,7 @@ const ManropeFont = Manrope({
 });
 
 export default function QuickBarImageMenu() {
-    const { addNode } = useContext(BoardContext);
+    const { addNode } = useContext(PageContext);
 
     const urlInput = useInput('');
     const [urlInputError, setUrlInputError] = useState(true);

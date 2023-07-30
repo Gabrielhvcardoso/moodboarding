@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { BoardContext } from '@/app/board/[slug]/page';
+import { PageContext } from '@/app/board/components/page/page.component';
 
 import styles from './quick-bar-shapes-menu.module.scss';
 
@@ -17,7 +17,7 @@ const MENU_ITEMS = [
 ]
 
 export default function QuickBarShapesMenu() {
-    const { addNode } = useContext(BoardContext);
+    const { addNode } = useContext(PageContext);
 
     function addShape(nodeType: string) {
         addNode({

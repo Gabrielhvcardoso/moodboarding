@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState } from 'react';
-import { BoardContext } from '../../[slug]/page';
+import { PageContext } from '../../components/page/page.component';
 import { Star, Type, Image as ImageIcon, Film, CodeSlash } from "react-bootstrap-icons";
 import QuickBarShapesMenu from './components/quick-bar-shapes-menu/quick-bar-shapes-menu.component';
 import QuickBarImageMenu from './components/quick-bar-image-menu/quick-bar-image-menu.component';
@@ -15,7 +15,7 @@ const MenuOffset: Record<MenuState, number> = {
 }
 
 export default function QuickBar() {
-    const { addNode } = useContext(BoardContext);
+    const { addNode } = useContext(PageContext);
     const [menuState, setMenuState] = useState<MenuState|null>(null);
 
     const menuStyle = useMemo(() => {
