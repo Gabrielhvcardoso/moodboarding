@@ -12,6 +12,35 @@
     z-index: 10;
 }
 
+
+.loadingContainer {
+    align-items: center;
+    background-color: #121629;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: calc(48px / 1.618);
+    inset: 0;
+    justify-content: center;
+    position: fixed;
+
+    a {
+        font-size: 48px;
+        pointer-events: none;
+    }
+
+    span {
+        font-size: 12px;
+        text-transform: uppercase;
+
+        &::first-letter {
+            font-size: 14px;
+        }
+    }
+}
+
+// Loaded
+
 $header-height: var(--app-header-height);
 $wave-height: 150px;
 
@@ -67,7 +96,7 @@ $wave-height: 150px;
     flex-direction: row;
     justify-content: space-between;
     margin: 12px 12px 0;
-    padding: 12px 0px 12px 12px;
+    padding: 12px;
     overflow: hidden;
     z-index: 1;
 
@@ -94,6 +123,7 @@ $wave-height: 150px;
 
 .appHeader_link {
     color: inherit;
+    cursor: pointer;
     font-size: 14px;
     font-weight: 700;
     text-decoration: none;

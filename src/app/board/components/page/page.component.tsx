@@ -147,7 +147,7 @@ export default function Page({ slug }: Props) {
                     connectionMode={ConnectionMode.Loose}
                     defaultEdgeOptions={{ type: 'regular' }}
                 >
-                    <Background gap={12} size={2} color="var(--color-stroke)" />
+                    <Background gap={12} size={2} color="var(--color-tertiary)" />
                     <Controls />
                 </ReactFlow>
 
