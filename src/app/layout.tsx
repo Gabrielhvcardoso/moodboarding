@@ -72,6 +72,8 @@ export default function RootLayout({ children }: Props) {
 
                 { /**/ }
 
+                <div id="app-portal" className={styles.globalPortal}></div>
+
                 <div className={styles.globalDisplayFilter}></div>
             </body>
         </html>
