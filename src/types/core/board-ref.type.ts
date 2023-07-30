@@ -1,4 +1,4 @@
 export interface BoardRef {
-    title: string;
+    title?: string;
     slug: string;
 }

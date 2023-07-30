@@ -1,45 +1,43 @@
+'use client';
+
 import styles from "./page.module.scss";
 import Link from 'next/link';
 import { BoardRef } from '@/types';
-
-const CARD_SESSSIONS: { title: string, boards: BoardRef[] }[] = [
-    {
-        title: 'Quadros recentes',
-        boards: [
-            {
-                title: 'Test Board 001',
-                slug: '227319d4-ef27-47cd-9e23-1f257193ae4c'
-            }
-        ]
-    },
-    {
-        title: 'Meus quadros',
-        boards: [
-            {
-                title: 'Test Board 001',
-                slug: '227319d4-ef27-47cd-9e23-1f257193ae4c'
-            }
-        ]
-    }
-]
+import { useEffect, useState } from "react";
+import { isUuid } from "@/utils/web";
 
 export default function Home() {
+    const [recents, setRecents] = useState<BoardRef[]>([]);
+
+    useEffect(() => {
+        const localBoards: BoardRef[] = [];
+        for (var slug in localStorage) {
+            if (isUuid(slug)) {
+                localBoards.push({
+                    slug,
+                    title: JSON.parse(localStorage.getItem(slug) ?? '{}')?.title
+                });
+            }
+        }
+        setRecents(localBoards);
+    }, [])
+
     return (
         <main className={styles.main}>
 
             { /* Emphasis card row */ }
 
             <div className={styles.cardRowwwEmphasis}>
-                <span className={styles.emphasisTitle}>Bem vindo</span>
+                <span className={styles.emphasisTitle}>Welcome!</span>
                 <div className={styles.cardRowww}>
                     <div className={styles.card}>
-                        <div className={styles.cardBottomText}>Quadros</div>
+                        <div className={styles.cardBottomText}>Boards</div>
                     </div>
                     <div className={styles.card}>
-                        <div className={styles.cardBottomText}>Explorar</div>
+                        <div className={styles.cardBottomText}>Explore</div>
                     </div>
                     <div className={styles.card}>
-                        <div className={styles.cardBottomText}>Aprender</div>
+                        <div className={styles.cardBottomText}>Learn</div>
                     </div>
                 </div>
             </div>
@@ -47,23 +45,22 @@ export default function Home() {
             { /* Custom Card Rows */ }
 
             {
-                CARD_SESSSIONS.map((sss) => (
+                !!recents.length && (
                     <>
-                        <span className={styles.cardRowwwHeadline}>
-                            { sss.title }
-                        </span>
+                        <span className={styles.cardRowwwHeadline}>Recent Boards</span>
                         <div className={styles.cardRowww}>
                             {
-                                sss.boards.map(({ title, slug }) => (
+                                recents.map(({ title, slug }) => (
                                     <Link key={slug} className={styles.cardContainer} role="div" href={`/board/${slug}`}>
                                         <div className={styles.card}></div>
-                                        <span>{ title }</span>
+                                        <span>{ title ?? 'Untitled Board' }</span>
+                                        <small>{ slug }</small>
                                     </Link>
                                 ))
                             }
                         </div>
                     </>
-                ))
+                )
             }
         </main>
     );

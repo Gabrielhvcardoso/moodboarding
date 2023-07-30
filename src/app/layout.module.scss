@@ -89,7 +89,9 @@ $wave-height: 150px;
 }
 
 .appHeader_link {
+    color: inherit;
     font-size: 14px;
     font-weight: 700;
+    text-decoration: none;
     text-transform: uppercase;
 }
