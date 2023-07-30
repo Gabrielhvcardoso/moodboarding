@@ -13,7 +13,7 @@
   --color-paragraph: #b8c1ec;
   --color-button: #eebbc3;
   --color-button-hover: #E8A1AC;
-  --color-button-text: #232946;
+  --color-button-text: #192331;
 
   --color-stroke: #121629;
   --color-main: #b8c1ec;
@@ -22,6 +22,16 @@
   --color-highlight: #eebbc3;
   --color-secondary: #fffffe;
   --color-tertiary: #eebbc3;
+  --color-warning: #eeebbb;
+  --color-danger: #e69a99;
+
+  --color-pallete-yellow: #eeebbb;
+  --color-pallete-orange: #dc9b6f;
+  --color-pallete-red: #e69a99;
+  --color-pallete-green: #c5eebb;
+  --color-palette-blue: #bbd1ee;
+  --color-palette-purple: #414B81;
+  --color-pallete-pink: #eebbc3;
 }
 
 @media (prefers-color-scheme: dark) {

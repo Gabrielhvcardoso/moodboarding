@@ -1,0 +1,116 @@
+.appAlertBackdrop {
+    align-items: center;
+    background-color: var(--color-backdrop-none);
+    backdrop-filter: blur(0px);
+    display: flex;
+    flex-direction: column;
+    inset: 0;
+    justify-content: center;
+    position: fixed;
+    animation: backdrop-entry 2s linear forwards;
+}
+
+@keyframes backdrop-entry {
+    0% {
+        background-color: var(--color-backdrop-none);
+        backdrop-filter: blur(0px);
+    }
+
+    100% {
+        background-color: var(--color-backdrop-soft);
+        backdrop-filter: blur(5px);
+    }
+}
+
+.appAlertContainer {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-main);
+    color: var(--color-main);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+    max-width: calc(100vw - 24px);
+    opacity: 0;
+    animation: container-entry 0.2s linear forwards;
+
+    strong {
+        font-weight: 800;
+        user-select: none;
+    }
+
+    span {
+        font-size: 14px;
+    }
+
+    footer {
+        align-items: stretch;
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        margin-top: 12px;
+        user-select: none;
+    }
+
+    button {
+        cursor: pointer;
+        font-family: inherit;
+        font-weight: 800;
+        padding: 4px 8px;
+        transition: .2s;
+
+        &.buttonAccent {
+            background: none;
+            border: 1px solid var(--color-highlight);
+            color: var(--color-highlight);
+
+            &:hover {
+                background: var(--color-highlight);
+                color: var(--color-surface)
+            }
+        }
+
+        &.buttonWarning {
+            background: none;
+            border: 1px solid var(--color-warning);
+            color: var(--color-warning);
+
+            &:hover {
+                background: var(--color-warning);
+                color: var(--color-surface)
+            }
+        }
+
+        &.buttonDanger {
+            background: none;
+            border: 1px solid var(--color-danger);
+            color: var(--color-danger);
+
+            &:hover {
+                background: var(--color-danger);
+                color: var(--color-surface)
+            }
+        }
+
+        &.buttonDefault {
+            background: none;
+            border: 1px solid var(--color-main);
+            color: var(--color-main);
+
+            &:hover {
+                background: var(--color-main);
+                color: var(--color-surface)
+            }
+        }
+    }
+}
+
+@keyframes container-entry {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
