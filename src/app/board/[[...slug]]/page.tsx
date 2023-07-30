@@ -21,6 +21,7 @@ export interface BoardContextType {
     setTitle: (title: string) => void,
     pages: BoardContextPage[],
     setPages: (page: BoardContextPage[]) => void,
+    pageIndex: number,
     setPageIndex: (index: number) => void,
 }
 
@@ -73,7 +74,7 @@ export default function Board(props: Props) {
     const pageSlug = useMemo(() => pages?.[pageIndex]?.slug ?? null, [pages, pageIndex]);
 
     return (
-        <BoardContext.Provider value={{ slug, title, setTitle, pages, setPages, setPageIndex }}>
+        <BoardContext.Provider value={{ slug, title, setTitle, pages, setPages, pageIndex, setPageIndex }}>
             {
                 pages == null ? (
                     <div className={styles.board_loading}>

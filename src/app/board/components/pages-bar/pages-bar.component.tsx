@@ -16,10 +16,12 @@ interface Props {
     onChange: ChangeEventHandler<HTMLInputElement>;
     pages?: BoardContextPage[];
     onPagesChange?: (_pages: BoardContextPage[]) => void;
+    pageIndex?: number,
+    setPageIndex?: (pageIndex: number) => void;
 }
 
-export default function PagesBar({ value, onChange, pages, onPagesChange }: Props) {
-    const [opened, setOpened] = useState(false);
+export default function PagesBar({ value, onChange, pages, onPagesChange, pageIndex, setPageIndex }: Props) {
+    const [opened, setOpened] = useState(true);
     const [askDeletePageSlug, askDelete] = useState<string>(); // page slug
 
     const { addPage, removePage } = useContext(PageContext);
@@ -36,42 +38,45 @@ export default function PagesBar({ value, onChange, pages, onPagesChange }: Prop
 
     return (
         <>
-            <div className={`${styles.pagesBar} ${opened ? styles.opened : undefined}`}>
-                <input
-                    value={value ?? ''}
-                    onChange={onChange}
-                    placeholder="Untitled Board"
-                    className={`${styles.pagesBarInput} ${ManropeFont.className}`}
-                />
+            <div className={`${styles.pagesBarWrapper} ${opened ? styles.opened : undefined}`}>
+                <div className={styles.pagesBar}>
+                    <input
+                        value={value ?? ''}
+                        onChange={onChange}
+                        placeholder="Untitled Board"
+                        className={`${styles.pagesBarInput} ${ManropeFont.className}`}
+                    />
 
-                <div className={styles.pagesBarPageListHeader}>
-                    <small>Pages</small>
-                    <Plus onClick={addPage} />
-                </div>
+                    <div className={styles.pagesBarPageListHeader}>
+                        <small>Pages</small>
+                        <Plus onClick={addPage} />
+                    </div>
 
-                <div className={styles.pagesBarPageList}>
-                    {
-                        pages?.map((page, index) => (
-                            <div
-                                key={page.slug}
-                                className={styles.pagesBarPageItem}
-                                onDoubleClick={e => e.currentTarget.querySelector('input')?.focus()}
-                            >
-                                <input
-                                    value={page.title}
-                                    onChange={e => handlePageTitleChange(index, e.target.value)}
-                                    className={ManropeFont.className}
-                                />
-
+                    <div className={styles.pagesBarPageList}>
+                        {
+                            pages?.map((page, index) => (
                                 <div
-                                    className={styles.pagesBarPageItemDelete}
-                                    onClick={() => askDelete(page.slug)}
+                                    key={page.slug}
+                                    className={`${styles.pagesBarPageItem} ${pageIndex === index ? styles.active : null}`}
+                                    onClick={() => setPageIndex?.(index)}
+                                    onDoubleClick={e => e.currentTarget.querySelector('input')?.focus()}
                                 >
-                                    <X />
+                                    <input
+                                        value={page.title}
+                                        onChange={e => handlePageTitleChange(index, e.target.value)}
+                                        className={ManropeFont.className}
+                                    />
+
+                                    <div
+                                        className={styles.pagesBarPageItemDelete}
+                                        onClick={() => askDelete(page.slug)}
+                                    >
+                                        <X />
+                                    </div>
                                 </div>
-                            </div>
-                        ))
-                    }
+                            ))
+                        }
+                    </div>
                 </div>
 
                 <div

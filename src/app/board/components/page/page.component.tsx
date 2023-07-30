@@ -32,10 +32,15 @@ interface Props {
 }
 
 export default function Page({ slug }: Props) {
-    const { pages, setPages, setPageIndex, title: boardTitle, setTitle: setBoardTitle } = useContext<Partial<BoardContextType>>(BoardContext);
+    const [mounted, setMounted] = useState(false);
+    const { pages, setPages, pageIndex, setPageIndex, title: boardTitle, setTitle: setBoardTitle } = useContext<Partial<BoardContextType>>(BoardContext);
     const [title, setTitle] = useState<string>('');
     const [nodes, setNodes, onNodesChange] = useNodesState([]);
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     // Handle Page Switch
 
@@ -59,7 +64,7 @@ export default function Page({ slug }: Props) {
 
                 page = {
                     slug: slug ?? crypto.randomUUID().toString(),
-                    title: `Página ${pageIndex + 1}`,
+                    title: `Page ${pageIndex + 1}`,
                     nodes: [],
                     edges: [],
                     order: pageIndex
@@ -75,9 +80,9 @@ export default function Page({ slug }: Props) {
 
             const otherPages = (pages ?? []).filter(p => p.slug !== slug);
 
-            setPages([...otherPages, page]);
+            setPages([...otherPages, page].sort((a, b) => a.order > b.order ? 1 : -1));
         }
-    }, [title, nodes, edges, setPages]);
+    }, [mounted, title, nodes, edges, setPages]);
 
     // Board Controller
 
@@ -97,8 +102,8 @@ export default function Page({ slug }: Props) {
         let pageList = pages ?? [];
         let pageIndex = pageList.length;
         const page = {
-            slug: slug ?? crypto.randomUUID().toString(),
-            title: `Página ${pageIndex + 1}`,
+            slug: crypto.randomUUID().toString(),
+            title: `Page ${pageIndex + 1}`,
             nodes: [],
             edges: [],
             order: pageIndex
@@ -151,7 +156,14 @@ export default function Page({ slug }: Props) {
                     <Controls />
                 </ReactFlow>
 
-                <PagesBar value={boardTitle ?? ''} onChange={onBoardTitleChange} pages={pages} onPagesChange={onPagesChange} />
+                <PagesBar
+                    value={boardTitle ?? ''}
+                    onChange={onBoardTitleChange}
+                    pages={pages}
+                    onPagesChange={onPagesChange}
+                    pageIndex={pageIndex}
+                    setPageIndex={setPageIndex}
+                />
                 <QuickBar />
             </PageContext.Provider>
         </div>

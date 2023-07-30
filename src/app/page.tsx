@@ -62,44 +62,6 @@ export default function Home() {
                     </>
                 )
             }
-
-            {
-                !!recents.length && (
-                    <>
-                        <span className={styles.cardRowwwHeadline}>Recent Boards</span>
-                        <div className={styles.cardRowww}>
-                            {
-                                recents.map(({ title, slug }) => (
-                                    <Link key={slug} className={styles.cardContainer} role="div" href={`/board/${slug}`}>
-                                        <div className={styles.card}></div>
-                                        <span>{ title ?? 'Untitled Board' }</span>
-                                        <small>{ slug }</small>
-                                    </Link>
-                                ))
-                            }
-                        </div>
-                    </>
-                )
-            }
-
-            {
-                !!recents.length && (
-                    <>
-                        <span className={styles.cardRowwwHeadline}>Recent Boards</span>
-                        <div className={styles.cardRowww}>
-                            {
-                                recents.map(({ title, slug }) => (
-                                    <Link key={slug} className={styles.cardContainer} role="div" href={`/board/${slug}`}>
-                                        <div className={styles.card}></div>
-                                        <span>{ title ?? 'Untitled Board' }</span>
-                                        <small>{ slug }</small>
-                                    </Link>
-                                ))
-                            }
-                        </div>
-                    </>
-                )
-            }
         </main>
     );
 }
