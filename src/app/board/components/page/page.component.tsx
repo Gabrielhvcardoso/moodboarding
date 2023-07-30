@@ -1,16 +1,29 @@
 import { ChangeEventHandler, createContext, useCallback, useContext, useEffect, useState } from 'react';
-import ReactFlow, { Background, Controls, Node, Connection, ConnectionMode, addEdge, useEdgesState, useNodesState } from "reactflow";
+import ReactFlow, { Background, Controls, Node, Edge, Connection, ConnectionMode, addEdge, useEdgesState, useNodesState, OnNodesChange, OnEdgesChange } from "reactflow";
 
 import QuickBar from "../quick-bar/quick-bar.component";
-import TitleBar from '../title-bar/title-bar.component';
+import PagesBar from '../pages-bar/pages-bar.component';
 import styles from './page.module.scss';
 
 import NODE_TYPES from "../nodes/node-types";
 import EDGE_TYPES from "../edges/edge-types";
 
 import { BoardContext } from '../../[[...slug]]/page';
-import { BoardContextType, BoardContextPage } from '../../board-context.type';
-import { PageContextType } from "../../page-context.type";
+import { BoardContextType, BoardContextPage } from '../../[[...slug]]/page';
+
+export interface PageContextType {
+    nodes: Node<any, string | undefined>[],
+    setNodes: React.Dispatch<React.SetStateAction<Node<any, string | undefined>[]>>,
+    onNodesChange: OnNodesChange,
+    edges: Edge<any>[],
+    setEdges: React.Dispatch<React.SetStateAction<Edge<any>[]>>,
+    onEdgesChange: OnEdgesChange,
+
+    addNode: (node: Node) => void,
+    addPage: () => void,
+    removePage: (slug: string) => void
+}
+
 
 export const PageContext = createContext<PageContextType>({} as PageContextType);
 
@@ -19,7 +32,7 @@ interface Props {
 }
 
 export default function Page({ slug }: Props) {
-    const { pages, setPages } = useContext<Partial<BoardContextType>>(BoardContext);
+    const { pages, setPages, setPageIndex, title: boardTitle, setTitle: setBoardTitle } = useContext<Partial<BoardContextType>>(BoardContext);
     const [title, setTitle] = useState<string>('');
     const [nodes, setNodes, onNodesChange] = useNodesState([]);
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
@@ -72,8 +85,32 @@ export default function Page({ slug }: Props) {
         return setEdges(edges => addEdge(connection, edges));
     }, [setEdges]);
 
-    const onTitleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-        setTitle(event.target.value);
+    const onBoardTitleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+        setBoardTitle?.(event.target.value);
+    }
+
+    const onPagesChange = (_pages: BoardContextPage[]) => {
+        setPages?.(_pages);
+    }
+
+    function addPage() {
+        let pageList = pages ?? [];
+        let pageIndex = pageList.length;
+        const page = {
+            slug: slug ?? crypto.randomUUID().toString(),
+            title: `Página ${pageIndex + 1}`,
+            nodes: [],
+            edges: [],
+            order: pageIndex
+        };
+        setPages?.([...pageList, page]);
+        setPageIndex?.(pageIndex);
+    }
+
+    function removePage(slug: string) {
+        if (setPages && pages?.length) {
+            setPages(pages.filter(page => page.slug !== slug))
+        }
     }
 
     function addNode(node: Node) {
@@ -82,7 +119,17 @@ export default function Page({ slug }: Props) {
 
     return (
         <div className={styles.page_main}>
-            <PageContext.Provider value={{ nodes, setNodes, onNodesChange, edges, setEdges, onEdgesChange, addNode }}>
+            <PageContext.Provider value={{
+                nodes,
+                setNodes,
+                onNodesChange,
+                edges,
+                setEdges,
+                onEdgesChange,
+                addNode,
+                addPage,
+                removePage
+            }}>
                 <ReactFlow
 
                     /* Nodes */
@@ -104,7 +151,7 @@ export default function Page({ slug }: Props) {
                     <Controls />
                 </ReactFlow>
 
-                <TitleBar value={title} onChange={onTitleChange} />
+                <PagesBar value={boardTitle ?? ''} onChange={onBoardTitleChange} pages={pages} onPagesChange={onPagesChange} />
                 <QuickBar />
             </PageContext.Provider>
         </div>

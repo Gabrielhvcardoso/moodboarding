@@ -1,0 +1,120 @@
+$header-height: var(--app-header-height);
+
+.pagesBar {
+    background: var(--color-background);
+    color: var(--color-main);
+    border: 1px solid var(--color-main);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    transform: translateX(-180px);
+    transition: .6s transform;
+
+    &.opened {
+        transform: translateX(0px);
+
+        .floatingButton {
+            transform: translate(50%, 50%) rotate(180deg);
+        }
+    }
+
+    .floatingButton {
+        align-items: center;
+        background-color: var(--color-highlight);
+        border-radius: 50%;
+        color: var(--color-background);
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 24px;
+        width: 24px;
+        transform: translate(50%, 50%) rotate(0deg);
+
+        svg {
+            width: 12px;
+        }
+    }
+}
+
+.pagesBarInput {
+    color: var(--color-main);
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding: 12px;
+
+    &::placeholder {
+        color: var(--color-main-hold);
+    }
+}
+
+.pagesBarPageListHeader {
+    align-items: center;
+    border-bottom: 1px solid var(--color-main-hold);
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 12px;
+
+    small {
+        font-size: 10px;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+
+        &::first-letter {
+            font-size: 12px;
+        }
+    }
+
+    svg {
+        cursor: pointer;
+    }
+}
+
+.pagesBarPageList {
+    display: flex;
+    flex-direction: column;
+}
+
+.pagesBarPageItem {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    padding: 12px;
+
+    input {
+        background: none;
+        border: none;
+        color: var(--color-main);
+        font-size: 14px;
+        outline: none;
+        pointer-events: none;
+        text-overflow: ellipsis;
+
+        &:focus {
+            pointer-events: all;
+        }
+    }
+
+    &:hover {
+        background-color: var(--color-background-hover);
+    }
+    
+    .pagesBarPageItemDelete {
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+
+        &:hover {
+            background-color: var(--color-background);
+        }
+    }
+}

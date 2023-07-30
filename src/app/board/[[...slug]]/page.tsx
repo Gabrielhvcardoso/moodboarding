@@ -2,11 +2,28 @@
 
 import { createContext, useEffect, useMemo, useState } from "react";
 import { useRouter } from 'next/navigation';
-import { BoardContextType } from '../board-context.type';
 
 import styles from "./page.module.scss";
 import "reactflow/dist/style.css";
 import Page from "../components/page/page.component";
+
+import { PageContextType } from "../components/page/page.component";
+
+export interface BoardContextPage extends Partial<Pick<PageContextType, 'nodes'|'edges'>> {
+    slug: string,
+    title: string,
+    order: number,
+}
+
+export interface BoardContextType {
+    slug: string,
+    title: string|null,
+    setTitle: (title: string) => void,
+    pages: BoardContextPage[],
+    setPages: (page: BoardContextPage[]) => void,
+    setPageIndex: (index: number) => void,
+}
+
 
 export const BoardContext = createContext<Partial<BoardContextType>>({} as BoardContextType);
 
@@ -56,7 +73,7 @@ export default function Board(props: Props) {
     const pageSlug = useMemo(() => pages?.[pageIndex]?.slug ?? null, [pages, pageIndex]);
 
     return (
-        <BoardContext.Provider value={{ slug, title, pages, setPages }}>
+        <BoardContext.Provider value={{ slug, title, setTitle, pages, setPages, setPageIndex }}>
             {
                 pages == null ? (
                     <div className={styles.board_loading}>
