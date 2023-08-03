@@ -1,0 +1,17 @@
+$header-height: var(--app-header-height);
+
+.pageContainer {
+    color: var(--color-main);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow: hidden;
+    margin-top: calc($header-height * -1 - 12px);
+
+    .results {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: row;
+        flex: 1 0 auto;
+    }
+}
