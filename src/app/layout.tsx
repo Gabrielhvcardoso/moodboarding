@@ -60,6 +60,7 @@ export default function RootLayout({ children }: Props) {
                 document.documentElement.style.setProperty("--color-main-hold", theme.mainHold);
                 document.documentElement.style.setProperty("--color-highlight", theme.highlight);
                 document.documentElement.style.setProperty("--color-secondary", theme.secondary);
+                document.documentElement.style.setProperty("--color-tertiary", theme.tertiary);
                 document.documentElement.style.setProperty("--color-warning", theme.warning);
                 document.documentElement.style.setProperty("--color-danger", theme.danger);
                 document.documentElement.style.setProperty("--color-palette-yellow", palette.yellow);
@@ -105,7 +106,7 @@ export default function RootLayout({ children }: Props) {
 
                     <div className={styles.appHeader_linkContainer}>
                         <Link className={`${ManropeFont.className} ${styles.appHeader_link}`} href="/board">Create</Link>
-                        <span className={`${ManropeFont.className} ${styles.appHeader_link}`}>Explore</span>
+                        <Link className={`${ManropeFont.className} ${styles.appHeader_link}`} href="/discover">Discover</Link>
                         <span className={`${ManropeFont.className} ${styles.appHeader_link}`}>Boards</span>
                         <PaletteFill className={styles.appHeader_link} onClick={() => setThemesWindowState(true)} />
                     </div>
