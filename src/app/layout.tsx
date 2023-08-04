@@ -11,6 +11,7 @@ import { PaletteFill } from 'react-bootstrap-icons'
 import { useEffect, useMemo, useState } from 'react'
 import ThemesWindow from './components/themes-window/themes-window.component'
 import { THEMES } from '@/config/themes.config'
+import AppAvatar from './components/app-avatar/app-avatar.component'
 
 // Metadata
 
@@ -109,6 +110,8 @@ export default function RootLayout({ children }: Props) {
                         <Link className={`${ManropeFont.className} ${styles.appHeader_link}`} href="/discover">Discover</Link>
                         <span className={`${ManropeFont.className} ${styles.appHeader_link}`}>Boards</span>
                         <PaletteFill className={styles.appHeader_link} onClick={() => setThemesWindowState(true)} />
+
+                        <AppAvatar src={null} href="/profile" />
                     </div>
                 </header>
 
