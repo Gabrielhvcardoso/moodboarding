@@ -1,3 +1,5 @@
+// Global Styles
+
 .globalPortal {
     z-index: 9;
 }
@@ -12,6 +14,7 @@
     z-index: 10;
 }
 
+// Loading
 
 .loadingContainer {
     align-items: center;
@@ -39,7 +42,16 @@
     }
 }
 
-// Loaded
+// Main Container
+
+.appMain {
+    align-items: stretch;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+// Waves
 
 $header-height: var(--app-header-height);
 $wave-height: 150px;
@@ -85,6 +97,8 @@ $wave-height: 150px;
     }
 }
 
+// Header
+
 .appHeader {
     backdrop-filter: blur(5px);
     border-top: var(--color-main) 0.1px solid;
@@ -107,14 +121,23 @@ $wave-height: 150px;
         border-top: var(--color-stroke) 0.1px solid !important;
         border-bottom: var(--color-stroke) 0.1px solid !important;
         color: var(--color-stroke) !important;
+
+        .appHeader_MenuIcon {
+            fill: var(--color-stroke);
+        }
     }
 }
 
-.appMain {
-    align-items: stretch;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
+.appHeader_MenuIcon {
+    fill: var(--color-main);
+}
+
+.appHeader_ExpandMenu {
+
+}
+
+.appHeader_linkContainer_Wrapper {
+    display: none;
 }
 
 .appHeader_linkContainer {
@@ -122,6 +145,36 @@ $wave-height: 150px;
     display: flex;
     flex-direction: row;
     gap: 16px;
+}
+
+@media (max-width: 768px) {
+    .appHeader_linkContainer_Wrapper {
+        align-items: center;
+        background-color: var(--color-backdrop-soft);
+        backdrop-filter: blur(0px);
+        color: var(--color-main);
+        display: flex;
+        flex-direction: column;
+        inset: 0;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        position: fixed;
+        transition: 0.6s;
+
+        &.opened {
+            pointer-events: all;
+            backdrop-filter: blur(5px);
+            opacity: 1;
+        }
+    }
+    
+    .appHeader_linkContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
 }
 
 .appHeader_link {
