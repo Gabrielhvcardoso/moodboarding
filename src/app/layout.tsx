@@ -1,6 +1,8 @@
 'use client'
 
 import './globals.scss'
+import './typography.scss';
+
 import { usePathname } from 'next/navigation'
 import { Manrope } from 'next/font/google'
 import Link from 'next/link'

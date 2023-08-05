@@ -1,0 +1,24 @@
+// Font minimum, preferred and maximum value */
+
+h1, h2, p, span, a {
+    font-size: clamp(var(--min), var(--val), var(--max));
+    letter-spacing: 1px;
+}
+
+h1 {
+    --min: 2em;
+    --val: 5vw;
+    --max: 3em;
+}
+
+h2 {
+    --min: 1.5em;
+    --val: 4vw;
+    --max: 2.25em;
+}
+
+p, span, a {
+    --min: 1em;
+    --val: 16px;
+    --max: 1.5em;
+}
