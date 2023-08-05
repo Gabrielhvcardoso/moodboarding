@@ -4,11 +4,6 @@ import Image from "next/image";
 import styles from "./discover-persistent-banner.module.scss";
 import { Manrope } from "next/font/google";
 
-const ManropeFont = Manrope({
-    subsets: ["latin"],
-    weight: "200"
-})
-
 const bannerImage = {
     location: "/image01.jpg"
 }
@@ -25,24 +20,20 @@ export default function DiscoverPersistentBanner() {
                     alt="A"
                     className={styles.bannerImage}
                     src={bannerImage.location}
-                    width={2400}
-                    height={1350}
+                    width={1200}
+                    height={675}
                 />
-
-                {/* Clone to control container height */}
-                <div className={styles.bannerInfo}>
-                    <h1>Petra</h1>
-                    <span>What is known</span>
-                    
-                </div>
 
                 <div className={styles.bannerFilter}>
                     <div className={styles.bannerInfo}>
-                        <h1 className={ManropeFont.className}>Petra</h1>
-                        <span>What is known</span>
+                        <h1>ANIMALS IN Nums</h1>
+                        <span>Know the most diversified board of animals curiosities.</span>
+                        <a href="">Acessar</a>
                     </div>
                 </div>
             </div>
+
+            <a href="" className={styles.imageCredits}>Anakin Skywalker</a>
 
             <section className={styles.marqueeSection}>
                 <div className={styles.marqueDiv}>
