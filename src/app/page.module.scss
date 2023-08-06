@@ -1,11 +1,18 @@
+$header-height: var(--app-header-height);
+
 .main {
     align-items: stretch;
+    color: var(--color-main);
+    backdrop-filter: blur(100px);
+    border-color: var(--color-main);
     display: flex;
     flex: 1;
     flex-direction: column;
     gap: 12px;
-    padding: 24px;
+    margin-top: calc($header-height * -1 - 24px);
     overflow: auto;
+    padding: calc($header-height + 24px) 24px 24px 24px;
+    z-index: 1;
 }
 
 .cardRowwwEmphasis {
@@ -20,7 +27,6 @@
     }
 
     .card {
-        border-color: var(--color-stroke) !important;
         min-height: 96px !important;
         height: min-content;
     }
@@ -46,9 +52,9 @@
     display: grid;
     font-size: 14px;
     font-weight: 600;
-    grid-template-columns: repeat(3, clamp(180px, 25%, 300px));
-    gap: 12px;
-    margin: 24px 0;
+    grid-template-columns: repeat(auto-fit, clamp(180px, 25%, 300px));
+    gap: 48px 1rem;
+    margin-top: 24px;
 
     @media (max-width: 615px) {
         display: flex;
@@ -61,7 +67,7 @@
         display: flex;
         flex: 1;
         flex-direction: column;
-        gap: 8px;
+        gap: 12px;
         min-width: 150px;
         text-decoration: none;
     }
@@ -75,7 +81,8 @@
         flex: 1;
         flex-direction: row;
         justify-content: space-between;
-        min-height: 160px;
+        min-height: 180px;
+        max-height: 180px;
         padding: 12px;
 
         .cardBottomText {
