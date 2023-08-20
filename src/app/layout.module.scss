@@ -8,7 +8,7 @@
     background: rgb(182, 34, 58, 0.1);
     background-image: url('../assets/filters/noise-1.png');
     inset: 0 0 0 0;
-    position: absolute;
+    position: fixed;
     pointer-events: none;
     opacity: 0.04;
     z-index: 10;
@@ -49,81 +49,6 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-}
-
-// Header
-
-$header-height: var(--app-header-height);
-
-.appHeader {
-    backdrop-filter: blur(5px);
-    border-top: var(--color-main) 0.1px solid;
-    border-bottom: var(--color-main) 0.1px solid;
-    color: var(--color-main);
-    display: flex;
-    min-height: $header-height;
-    max-height: $header-height;
-    flex: 1 0 auto;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 12px 12px 0;
-    padding: 12px;
-    position: sticky;
-    top: 12px;
-    overflow: hidden;
-    z-index: 3;
-}
-
-.appHeader_MenuIcon {
-    fill: var(--color-main);
-}
-
-.appHeader_linkContainer_Wrapper {
-    display: none;
-}
-
-.appHeader_linkContainer {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-}
-
-@media (max-width: 768px) {
-    .appHeader_linkContainer_Wrapper {
-        align-items: center;
-        background-color: var(--color-backdrop-soft);
-        backdrop-filter: blur(0px);
-        color: var(--color-main);
-        display: flex;
-        flex-direction: column;
-        inset: 0;
-        justify-content: center;
-        opacity: 0;
-        pointer-events: none;
-        position: fixed;
-        transition: 0.6s;
-
-        &.opened {
-            pointer-events: all;
-            backdrop-filter: blur(5px);
-            opacity: 1;
-        }
-    }
-    
-    .appHeader_linkContainer {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
-}
-
-.appHeader_link {
-    color: inherit;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 700;
-    text-decoration: none;
-    text-transform: uppercase;
+    max-width: 100%;
+    // overflow-x: hidden;
 }

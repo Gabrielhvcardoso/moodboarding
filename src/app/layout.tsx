@@ -3,23 +3,15 @@
 import './globals.scss'
 import './typography.scss'
 
-import { usePathname } from 'next/navigation'
+import type { Metadata } from 'next'
+import { useEffect, useState } from 'react'
 import { Manrope } from 'next/font/google'
-import Link from 'next/link'
+import { THEMES } from '@/config/themes.config'
+import AppHeader from './components/app-header/app-header.component'
 import AppLogo from './components/app-logo/app-logo.component';
 import styles from './layout.module.scss'
-import type { Metadata } from 'next'
-import { List, PaletteFill } from 'react-bootstrap-icons'
-import { useEffect, useMemo, useState } from 'react'
-import ThemesWindow from './components/themes-window/themes-window.component'
-import { THEMES } from '@/config/themes.config'
-import AppAvatar from './components/app-avatar/app-avatar.component'
-import { useWindowSize } from 'usehooks-ts'
-import AppIconButton from './components/app-icon-button/app-icon-button.component'
-import AppPortal from './components/app-portal/app-portal.component'
 
 // Metadata
-
 
 export const metadata: Metadata = {
     title: 'Moodboarding',
@@ -41,28 +33,8 @@ interface Props {
 
 export default function RootLayout({ children }: Props) {
     const [isLoading, setIsLoading] = useState(true);
-    const pathname = usePathname();
-    
-    // App Header Menu
-    const { width: windowWidth } = useWindowSize();
-    const [isMenuExpanded, setIsMenuExpanded] = useState(false);
-    const isMenuExpandable = useMemo(() => windowWidth < 768, [windowWidth]);
-    const appLinkClassName = `${ManropeFont.className} ${styles.appHeader_link}`;
-    const appLinkOnMouseUp = () => setIsMenuExpanded(false);
 
-    function handleMenuIconClick() {
-        if (isMenuExpandable) {
-            setIsMenuExpanded(!isMenuExpanded);
-        }
-    }
-
-    useEffect(() => {
-        if (!isMenuExpandable) setIsMenuExpanded(false);
-    }, [isMenuExpandable]);
-
-    // App Theme
-    const [themesWindowState, setThemesWindowState] = useState(false);
-
+    // App Theme Management
     useEffect(() => {
         const updateCSSVariables = () => {
             const { theme, palette } = THEMES.find(({ slug }) => slug === localStorage.getItem('user-theme') ?? 'default') ?? THEMES[0];
@@ -121,70 +93,13 @@ export default function RootLayout({ children }: Props) {
     return (
         <html lang="pt-br">
             <body>
-                <header className={styles.appHeader}>
+                <AppHeader />
 
-                    { /**/ }
-
-                    <AppLogo />
-
-                    { /**/ }
-
-                    {
-                        isMenuExpandable ? (
-                            <AppIconButton
-                                title="Open menu"
-                                onClick={handleMenuIconClick}
-                                className={styles.appHeader_ExpandMenu}
-                            >
-                                <List
-                                    fontSize={24}
-                                    className={styles.appHeader_MenuIcon}
-                                />
-                            </AppIconButton>
-                        ) : (
-                            <div className={styles.appHeader_linkContainer}>
-                                <Link className={appLinkClassName} href="/board">Create</Link>
-                                <Link className={appLinkClassName} href="/discover">Discover</Link>
-                                <span className={appLinkClassName}>Boards</span>
-                                <PaletteFill className={styles.appHeader_link} onClick={() => setThemesWindowState(true)} />
-
-                                <AppAvatar src={null} href="/profile" />
-                            </div>
-                        )
-                    }
-
-                    <AppPortal>
-                        <div
-                            className={`${styles.appHeader_linkContainer_Wrapper} ${isMenuExpanded ? styles.opened : ''}`}
-                            onMouseDown={handleMenuIconClick}
-                        >
-                            <div
-                                className={styles.appHeader_linkContainer}
-                                onMouseDown={e => e.stopPropagation()}
-                            >
-                                <Link onMouseUp={appLinkOnMouseUp} className={appLinkClassName} href="/">Home</Link>
-                                <Link onMouseUp={appLinkOnMouseUp} className={appLinkClassName} href="/board">Create</Link>
-                                <Link onMouseUp={appLinkOnMouseUp} className={appLinkClassName} href="/discover">Discover</Link>
-                                <span onMouseUp={appLinkOnMouseUp} className={appLinkClassName}>Boards</span>
-                                <span onMouseUp={appLinkOnMouseUp} className={appLinkClassName} onClick={() => { setIsMenuExpanded(false); setThemesWindowState(true); }}>Themes</span>
-                                <Link onMouseUp={appLinkOnMouseUp} className={appLinkClassName} href="/discover">Settings</Link>
-                            </div>
-                        </div>
-                    </AppPortal>
-                </header>
-
-                { /**/ }
-                    
                 <main className={`${styles.appMain} ${ManropeFont.className}`}>
                     { children }
                 </main>
 
-                { /**/ }
-
-                { themesWindowState && <ThemesWindow onClose={() => setThemesWindowState(false)}/> }
-
                 <div id="app-portal" className={styles.globalPortal}></div>
-
                 <div className={styles.globalDisplayFilter}></div>
             </body>
         </html>
