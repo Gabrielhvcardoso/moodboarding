@@ -10,7 +10,6 @@ $header-height: var(--app-header-height);
     flex-direction: column;
     gap: 12px;
     margin-top: calc($header-height * -1 - 24px);
-    overflow: auto;
     padding: calc($header-height + 24px) 24px 24px 24px;
     z-index: 1;
 }
