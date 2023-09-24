@@ -67,7 +67,7 @@ export const THEMES: ThemeConfigType[] = [
         
             highlight: "#FFBB34",
             secondary: "#eaddcf",
-            tertiary: "#020826",
+            tertiary: "#B5AA98",
             warning: "#eeebbb",
             danger: "#e69a99",
         },

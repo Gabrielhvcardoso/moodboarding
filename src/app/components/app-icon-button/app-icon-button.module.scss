@@ -1,0 +1,32 @@
+.appIconButton {
+    align-items: center;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    height: 34px;
+    justify-content: center;
+    width: 34px;
+    padding: 8px;
+
+    &:hover {
+        filter: brightness(90%);
+    }
+
+    &.default {
+        background-color: var(--color-backdrop-soft);
+    }
+
+    &.accent {
+        background-color: var(--color-main);
+    }
+
+    &.warning {
+        background-color: var(--color-warning);
+    }
+
+    &.danger {
+        background-color: var(--color-danger);
+    }
+}
+

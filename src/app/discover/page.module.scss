@@ -1,0 +1,20 @@
+$header-height: var(--app-header-height);
+
+.pageContainer {
+    color: var(--color-main);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 24px;
+    overflow: hidden;
+    padding: 24px;
+
+    .results {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: row;
+        flex: 1 0 auto;
+        margin-top: 32px;
+        gap: 48px;
+    }
+}

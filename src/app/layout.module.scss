@@ -1,3 +1,5 @@
+// Global Styles
+
 .globalPortal {
     z-index: 9;
 }
@@ -6,12 +8,13 @@
     background: rgb(182, 34, 58, 0.1);
     background-image: url('../assets/filters/noise-1.png');
     inset: 0 0 0 0;
-    position: absolute;
+    position: fixed;
     pointer-events: none;
     opacity: 0.04;
     z-index: 10;
 }
 
+// Loading
 
 .loadingContainer {
     align-items: center;
@@ -39,93 +42,13 @@
     }
 }
 
-// Loaded
-
-$header-height: var(--app-header-height);
-$wave-height: 150px;
-
-.homePageWaves {
-    background-color: var(--color-highlight);
-    height: $wave-height;
-    margin-top: calc($header-height * -1 - 12px);
-    position: relative;
-
-    > .waveSvgContainer {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: row;
-        justify-content: flex-end;
-        gap: -32px;
-
-        > svg {
-            margin-top: -1px;
-            transform: translateX(0%) translateY($wave-height) rotate(180deg);
-            inset: 100% 0 0 auto;
-            z-index: 0;
-            min-width: 200vw;
-    
-            animation: animateWave 40s linear infinite both;
-        }
-    }
-
-    & ~ main {
-        margin-top: calc($wave-height * -1 + $header-height + 12px);
-        z-index: 1;
-        backdrop-filter: blur(100px);
-    }
-}
-
-@keyframes animateWave {
-    0% {
-        transform: translateX(0%) translateY($wave-height) rotate(180deg);
-    }
-
-    100% {
-        transform: translateX(100%) translateY($wave-height) rotate(180deg);
-    }
-}
-
-.appHeader {
-    border-top: var(--color-main) 0.1px solid;
-    border-bottom: var(--color-main) 0.1px solid;
-    color: var(--color-main);
-    display: flex;
-    min-height: $header-height;
-    max-height: $header-height;
-    flex: 1 0 auto;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 12px 12px 0;
-    padding: 12px;
-    overflow: hidden;
-    z-index: 1;
-
-    &.appHeaderInverseColors {
-        border-top: var(--color-stroke) 0.1px solid !important;
-        border-bottom: var(--color-stroke) 0.1px solid !important;
-        color: var(--color-stroke) !important;
-    }
-}
+// Main Container
 
 .appMain {
     align-items: stretch;
     display: flex;
     flex: 1;
     flex-direction: column;
-}
-
-.appHeader_linkContainer {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-}
-
-.appHeader_link {
-    color: inherit;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 700;
-    text-decoration: none;
-    text-transform: uppercase;
+    max-width: 100%;
+    // overflow-x: hidden;
 }
