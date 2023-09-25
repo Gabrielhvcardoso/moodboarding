@@ -7,11 +7,10 @@ import styles from "./page.module.scss";
 export default function DiscoverPage() {
     return (
         <main className={styles.pageContainer}>
-
-            <DiscoverPersistentBanner />
+            <DiscoverSideBar />
 
             <section className={styles.results}>
-                <DiscoverSideBar />
+                <DiscoverPersistentBanner />
                 <DiscoverResults />
             </section>
         </main>

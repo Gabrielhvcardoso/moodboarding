@@ -1,63 +1,34 @@
+import Image from "next/image";
 import styles from "./discover-results.module.scss";
+import AppAvatar from "@/app/components/app-avatar/app-avatar.component";
+import Link from "next/link";
 
 export default function DiscoverResults() {
     return (
         <aside className={styles.container}>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <p>Nobis hic fugit voluptate nostrum, ut laboriosam maiores quisquam id deleniti, temporibus eius iste.</p>
-            <p>Cum est recusandae facilis quod, temporibus ipsa </p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus a odit corporis vel ex officiis accusamus, odio dolore tempore sed voluptatum optio.</p>
-            <p>eligendi repellendus consectetur doloremque itaque voluptate repellat nihil.</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <p>Nobis hic fugit voluptate nostrum, ut laboriosam maiores quisquam id deleniti, temporibus eius iste.</p>
-            <p>Cum est recusandae facilis quod, temporibus ipsa </p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus a odit corporis vel ex officiis accusamus, odio dolore tempore sed voluptatum optio.</p>
-            <p>eligendi repellendus consectetur doloremque itaque voluptate repellat nihil.</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <p>Nobis hic fugit voluptate nostrum, ut laboriosam maiores quisquam id deleniti, temporibus eius iste.</p>
-            <p>Cum est recusandae facilis quod, temporibus ipsa </p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus a odit corporis vel ex officiis accusamus, odio dolore tempore sed voluptatum optio.</p>
-            <p>eligendi repellendus consectetur doloremque itaque voluptate repellat nihil.</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <p>Nobis hic fugit voluptate nostrum, ut laboriosam maiores quisquam id deleniti, temporibus eius iste.</p>
-            <p>Cum est recusandae facilis quod, temporibus ipsa </p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus a odit corporis vel ex officiis accusamus, odio dolore tempore sed voluptatum optio.</p>
-            <p>eligendi repellendus consectetur doloremque itaque voluptate repellat nihil.</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <p>Nobis hic fugit voluptate nostrum, ut laboriosam maiores quisquam id deleniti, temporibus eius iste.</p>
-            <p>Cum est recusandae facilis quod, temporibus ipsa </p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus a odit corporis vel ex officiis accusamus, odio dolore tempore sed voluptatum optio.</p>
-            <p>eligendi repellendus consectetur doloremque itaque voluptate repellat nihil.</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <p>Nobis hic fugit voluptate nostrum, ut laboriosam maiores quisquam id deleniti, temporibus eius iste.</p>
-            <p>Cum est recusandae facilis quod, temporibus ipsa </p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus a odit corporis vel ex officiis accusamus, odio dolore tempore sed voluptatum optio.</p>
-            <p>eligendi repellendus consectetur doloremque itaque voluptate repellat nihil.</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <p>Nobis hic fugit voluptate nostrum, ut laboriosam maiores quisquam id deleniti, temporibus eius iste.</p>
-            <p>Cum est recusandae facilis quod, temporibus ipsa </p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus a odit corporis vel ex officiis accusamus, odio dolore tempore sed voluptatum optio.</p>
-            <p>eligendi repellendus consectetur doloremque itaque voluptate repellat nihil.</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <p>Nobis hic fugit voluptate nostrum, ut laboriosam maiores quisquam id deleniti, temporibus eius iste.</p>
-            <p>Cum est recusandae facilis quod, temporibus ipsa </p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus a odit corporis vel ex officiis accusamus, odio dolore tempore sed voluptatum optio.</p>
-            <p>eligendi repellendus consectetur doloremque itaque voluptate repellat nihil.</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <p>Nobis hic fugit voluptate nostrum, ut laboriosam maiores quisquam id deleniti, temporibus eius iste.</p>
-            <p>Cum est recusandae facilis quod, temporibus ipsa </p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus a odit corporis vel ex officiis accusamus, odio dolore tempore sed voluptatum optio.</p>
-            <p>eligendi repellendus consectetur doloremque itaque voluptate repellat nihil.</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <p>Nobis hic fugit voluptate nostrum, ut laboriosam maiores quisquam id deleniti, temporibus eius iste.</p>
-            <p>Cum est recusandae facilis quod, temporibus ipsa </p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus a odit corporis vel ex officiis accusamus, odio dolore tempore sed voluptatum optio.</p>
-            <p>eligendi repellendus consectetur doloremque itaque voluptate repellat nihil.</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <p>Nobis hic fugit voluptate nostrum, ut laboriosam maiores quisquam id deleniti, temporibus eius iste.</p>
-            <p>Cum est recusandae facilis quod, temporibus ipsa </p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus a odit corporis vel ex officiis accusamus, odio dolore tempore sed voluptatum optio.</p>
-            <p>eligendi repellendus consectetur doloremque itaque voluptate repellat nihil.</p>
+            {
+
+                [1, 2, 3, 4, 5, 6].map(id => (
+                    <div key={id} className={styles.card}>
+                        <div className={styles.cardImageContainer}>
+                            <Image
+                                src="/image02.png"
+                                alt="Imagem de exemplo"
+                                fill
+                            />
+                        </div>
+
+                        <div className={styles.cardDetails}>
+                            <AppAvatar src={null} href="#" />
+                            <span className={styles.cardInfo}>
+                                <span className={styles.cardTitle}>Quadro 24501</span>
+                                <br />
+                                <Link href="#" className={styles.cardAuthor}>Jorjam Blanc</Link>
+                            </span>
+                        </div>
+                    </div>
+                ))
+            }
         </aside>
     );
 }
